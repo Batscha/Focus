@@ -48,6 +48,7 @@
             this.ButtonChooseSpeicherort = new MonoFlat.Class1.MonoFlat_Button();
             this.folderBrowserDialogMain = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogSpeicherort = new System.Windows.Forms.FolderBrowserDialog();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelPictures.SuspendLayout();
             this.panelPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
@@ -242,7 +243,7 @@
             this.flowLayoutPanelRecently.Controls.Add(this.ButtonChooseSpeicherort);
             this.flowLayoutPanelRecently.Location = new System.Drawing.Point(952, 27);
             this.flowLayoutPanelRecently.Name = "flowLayoutPanelRecently";
-            this.flowLayoutPanelRecently.Size = new System.Drawing.Size(157, 489);
+            this.flowLayoutPanelRecently.Size = new System.Drawing.Size(157, 352);
             this.flowLayoutPanelRecently.TabIndex = 3;
             // 
             // ButtonChooseSpeicherort
@@ -267,12 +268,21 @@
             // 
             this.folderBrowserDialogSpeicherort.Description = "Wählen sie einen Speicherort aus";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(952, 385);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(157, 131);
+            this.panel1.TabIndex = 4;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1121, 528);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanelRecently);
             this.Controls.Add(this.panelPreview);
             this.Controls.Add(this.flowLayoutPanelPictures);
@@ -314,6 +324,7 @@
         private System.Windows.Forms.Button buttonOpenInEditor;
         private Bunifu.Framework.UI.BunifuFlatButton ButtonSave;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
