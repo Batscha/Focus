@@ -48,7 +48,6 @@
             this.ButtonChooseSpeicherort = new MonoFlat.Class1.MonoFlat_Button();
             this.folderBrowserDialogMain = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogSpeicherort = new System.Windows.Forms.FolderBrowserDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanelPictures.SuspendLayout();
             this.panelPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
@@ -268,22 +267,12 @@
             // 
             this.folderBrowserDialogSpeicherort.Description = "Wählen sie einen Speicherort aus";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Hallo";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1121, 528);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanelRecently);
             this.Controls.Add(this.panelPreview);
             this.Controls.Add(this.flowLayoutPanelPictures);
@@ -325,7 +314,6 @@
         private System.Windows.Forms.Button buttonOpenInEditor;
         private Bunifu.Framework.UI.BunifuFlatButton ButtonSave;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Label label1;
     }
 }
 
