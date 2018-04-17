@@ -55,7 +55,6 @@
             this.labelGamma = new System.Windows.Forms.Label();
             this.trackBarGamma = new System.Windows.Forms.TrackBar();
             this.checkBoxOilPainting = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.panelAuflösung.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
@@ -396,21 +395,11 @@
             this.checkBoxOilPainting.UseVisualStyleBackColor = true;
             this.checkBoxOilPainting.CheckedChanged += new System.EventHandler(this.Change);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(828, 566);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 13);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Lool";
-            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 774);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxOilPainting);
             this.Controls.Add(this.labelGamma);
             this.Controls.Add(this.trackBarGamma);
@@ -472,6 +461,5 @@
         private System.Windows.Forms.Label labelGamma;
         private System.Windows.Forms.TrackBar trackBarGamma;
         private System.Windows.Forms.CheckBox checkBoxOilPainting;
-        private System.Windows.Forms.Label label1;
     }
 }
