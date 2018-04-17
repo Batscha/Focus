@@ -83,6 +83,7 @@ ipch/
 *.opendb
 *.opensdf
 *.sdf
+*.csproj
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
