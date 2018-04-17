@@ -12,5 +12,6 @@ namespace Focus
         public static string PreviewImagePath;
         public static string SpeicherortPath;
         public static string Endung;
+        public static bool PicturesInFolder = false;
     }
 }
