@@ -11,8 +11,10 @@ namespace Focus
 {
     public class EditImage
     {
+
         public static Bitmap Edit(Bitmap BMPEdit, int contrast, int brightness, int gamma, bool OilP)
         {
+           
             if (contrast != 1)//Contrast
             {
                 ContrastCorrection ContrastC = new ContrastCorrection(contrast);
@@ -23,16 +25,8 @@ namespace Focus
                 BrightnessCorrection BrightnessC = new BrightnessCorrection(brightness);
                 BMPEdit = BrightnessC.Apply(BMPEdit);
             }
-            //if (gamma != 0)
-            //{
-            //    GammaCorrection GammaC = new GammaCorrection(gamma);
-            //    BMPEdit = GammaC.Apply(BMPEdit);
-            //}
-            if (OilP)
-            {
-                OilPainting OilPaint = new OilPainting(10);
-                BMPEdit = OilPaint.Apply(BMPEdit);
-            }
+                GammaCorrection GammaC = new GammaCorrection(Convert.ToDouble(gamma)/10.0);
+                BMPEdit = GammaC.Apply(BMPEdit.Clone(new Rectangle(new Point(0,0),new Size(BMPEdit.Width,BMPEdit.Height)),System.Drawing.Imaging.PixelFormat.Format24bppRgb));
 
 
 

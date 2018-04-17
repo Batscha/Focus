@@ -54,7 +54,6 @@
             this.trackBarBrightness = new System.Windows.Forms.TrackBar();
             this.labelGamma = new System.Windows.Forms.Label();
             this.trackBarGamma = new System.Windows.Forms.TrackBar();
-            this.checkBoxOilPainting = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
             this.panelAuflösung.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
@@ -274,6 +273,7 @@
             0,
             0,
             0});
+            this.numericUpDownWidth.ValueChanged += new System.EventHandler(this.numericUpDownWidth_ValueChanged);
             // 
             // numericUpDownHeight
             // 
@@ -291,6 +291,7 @@
             0,
             0,
             0});
+            this.numericUpDownHeight.ValueChanged += new System.EventHandler(this.numericUpDownHeight_ValueChanged);
             // 
             // panelInfo
             // 
@@ -311,6 +312,7 @@
             // pictureBoxLoadingGIF
             // 
             this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxLoadingGIF.Enabled = false;
             this.pictureBoxLoadingGIF.Image = global::Focus.Properties.Resources.Ellipsis;
             this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(721, 675);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
@@ -323,11 +325,13 @@
             // trackBarContrast
             // 
             this.trackBarContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarContrast.Location = new System.Drawing.Point(721, 256);
+            this.trackBarContrast.Location = new System.Drawing.Point(721, 364);
+            this.trackBarContrast.Maximum = 100;
             this.trackBarContrast.Name = "trackBarContrast";
             this.trackBarContrast.Size = new System.Drawing.Size(264, 45);
+            this.trackBarContrast.SmallChange = 5;
             this.trackBarContrast.TabIndex = 33;
-            this.trackBarContrast.Value = 1;
+            this.trackBarContrast.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarContrast.Scroll += new System.EventHandler(this.Change);
             // 
             // labelContrast
@@ -335,7 +339,7 @@
             this.labelContrast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelContrast.AutoSize = true;
             this.labelContrast.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContrast.Location = new System.Drawing.Point(721, 232);
+            this.labelContrast.Location = new System.Drawing.Point(721, 331);
             this.labelContrast.Name = "labelContrast";
             this.labelContrast.Size = new System.Drawing.Size(67, 21);
             this.labelContrast.TabIndex = 12;
@@ -346,7 +350,7 @@
             this.labelBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBrightness.AutoSize = true;
             this.labelBrightness.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBrightness.Location = new System.Drawing.Point(721, 307);
+            this.labelBrightness.Location = new System.Drawing.Point(721, 456);
             this.labelBrightness.Name = "labelBrightness";
             this.labelBrightness.Size = new System.Drawing.Size(75, 21);
             this.labelBrightness.TabIndex = 34;
@@ -355,11 +359,13 @@
             // trackBarBrightness
             // 
             this.trackBarBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarBrightness.Location = new System.Drawing.Point(721, 331);
+            this.trackBarBrightness.Location = new System.Drawing.Point(721, 489);
+            this.trackBarBrightness.Maximum = 100;
             this.trackBarBrightness.Name = "trackBarBrightness";
             this.trackBarBrightness.Size = new System.Drawing.Size(264, 45);
+            this.trackBarBrightness.SmallChange = 5;
             this.trackBarBrightness.TabIndex = 35;
-            this.trackBarBrightness.Value = 1;
+            this.trackBarBrightness.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBarBrightness.Scroll += new System.EventHandler(this.Change);
             // 
             // labelGamma
@@ -367,7 +373,7 @@
             this.labelGamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGamma.AutoSize = true;
             this.labelGamma.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGamma.Location = new System.Drawing.Point(721, 381);
+            this.labelGamma.Location = new System.Drawing.Point(721, 580);
             this.labelGamma.Name = "labelGamma";
             this.labelGamma.Size = new System.Drawing.Size(63, 21);
             this.labelGamma.TabIndex = 36;
@@ -376,31 +382,20 @@
             // trackBarGamma
             // 
             this.trackBarGamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarGamma.Location = new System.Drawing.Point(721, 405);
+            this.trackBarGamma.Location = new System.Drawing.Point(721, 613);
+            this.trackBarGamma.Maximum = 44;
             this.trackBarGamma.Name = "trackBarGamma";
             this.trackBarGamma.Size = new System.Drawing.Size(264, 45);
             this.trackBarGamma.TabIndex = 37;
-            this.trackBarGamma.Value = 1;
+            this.trackBarGamma.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBarGamma.Value = 22;
             this.trackBarGamma.Scroll += new System.EventHandler(this.Change);
-            // 
-            // checkBoxOilPainting
-            // 
-            this.checkBoxOilPainting.AutoSize = true;
-            this.checkBoxOilPainting.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxOilPainting.Location = new System.Drawing.Point(721, 457);
-            this.checkBoxOilPainting.Name = "checkBoxOilPainting";
-            this.checkBoxOilPainting.Size = new System.Drawing.Size(91, 21);
-            this.checkBoxOilPainting.TabIndex = 38;
-            this.checkBoxOilPainting.Text = "Ölgemälde";
-            this.checkBoxOilPainting.UseVisualStyleBackColor = true;
-            this.checkBoxOilPainting.CheckedChanged += new System.EventHandler(this.Change);
             // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 774);
-            this.Controls.Add(this.checkBoxOilPainting);
             this.Controls.Add(this.labelGamma);
             this.Controls.Add(this.trackBarGamma);
             this.Controls.Add(this.labelBrightness);
@@ -460,6 +455,5 @@
         private System.Windows.Forms.TrackBar trackBarBrightness;
         private System.Windows.Forms.Label labelGamma;
         private System.Windows.Forms.TrackBar trackBarGamma;
-        private System.Windows.Forms.CheckBox checkBoxOilPainting;
     }
 }

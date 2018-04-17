@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using AForge.Imaging.Filters;
+using System.Diagnostics;
 
 namespace Focus
 {
@@ -47,11 +48,11 @@ namespace Focus
 
         private void buttonResetSize_Click(object sender, EventArgs e)
         {
-            //BMPEdit = BMP;
-            //numericUpDownHeight.Value = OriginalHeight;
-            //numericUpDownWidth.Value = OriginalWidth;
-            //labelHöhePX.Text = OriginalHeight.ToString() + " px";
-            //labelBreitePX.Text = OriginalWidth.ToString() + " px";
+            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(OriginalWidth), Convert.ToInt32(OriginalHeight));
+            numericUpDownHeight.Value = OriginalHeight;
+            numericUpDownWidth.Value = OriginalWidth;
+            labelHöhePX.Text = OriginalHeight.ToString() + " px";
+            labelBreitePX.Text = OriginalWidth.ToString() + " px";
         }
 
         private void bunifuFlatButtonSave_Click(object sender, EventArgs e)
@@ -63,13 +64,60 @@ namespace Focus
         }
 
         private void buttonResize_Click(object sender, EventArgs e)
-        {        
+        {
             pictureBoxMain.Image = EditImage.Resize(BMPEdit,Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
+            BMPEdit = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
         }
 
         private void Change(object sender, EventArgs e)
         {
-            pictureBoxMain.Image = EditImage.Edit(BMPEdit, trackBarContrast.Value, trackBarBrightness.Value , trackBarGamma.Value, checkBoxOilPainting.Checked);
+            BackgroundWorker g = new BackgroundWorker();
+            pictureBoxLoadingGIF.Visible = true;
+            pictureBoxLoadingGIF.Enabled = true;
+            g.DoWork += G_DoWork;
+            g.RunWorkerCompleted += G_RunWorkerCompleted;
+            g.RunWorkerAsync();
+        }
+
+        private void G_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pictureBoxLoadingGIF.Visible = false;
+            pictureBoxLoadingGIF.Enabled = false;
+        }
+
+        private void G_DoWork(object sender, DoWorkEventArgs e)
+        {
+            pictureBoxMain.Invoke(new Action(() =>
+            {
+                pictureBoxMain.Image = EditImage.Edit(BMPEdit, trackBarContrast.Value, trackBarBrightness.Value, trackBarGamma.Value, false);
+            }
+            ));
+        }
+
+        private void numericUpDownWidth_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownWidth.Value != BMPOriginal.Width)
+            {
+                buttonResize.BackColor = Color.IndianRed;
+            }
+            else
+            {
+                buttonResize.BackColor = Color.White;
+            }
+            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
+        }
+
+        private void numericUpDownHeight_ValueChanged(object sender, EventArgs e)
+        {
+            if(BMPOriginal.Height != numericUpDownHeight.Value)
+            {
+                buttonResize.BackColor = Color.IndianRed;
+            }
+            else
+            {
+                buttonResize.BackColor = Color.White;
+            }
+            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
         }
     }
 }
