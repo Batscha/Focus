@@ -15,6 +15,11 @@ namespace Focus
                 Variablen.Endung = ".jpg";
                 return FullName.Remove(FullName.Length - 4);
             }
+            if (FullName.Contains(".JPG"))
+            {
+                Variablen.Endung = ".JPG";
+                return FullName.Remove(FullName.Length - 4);
+            }
             if (FullName.Contains(".png"))
             {
                 Variablen.Endung = ".png";

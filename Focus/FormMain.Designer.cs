@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.flowLayoutPanelPictures = new System.Windows.Forms.FlowLayoutPanel();
-            this.ButtonChooseDirectory = new MonoFlat.Class1.MonoFlat_Button();
             this.panelPreview = new System.Windows.Forms.Panel();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -45,15 +44,13 @@
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanelRecently = new System.Windows.Forms.FlowLayoutPanel();
-            this.ButtonChooseSpeicherort = new MonoFlat.Class1.MonoFlat_Button();
             this.folderBrowserDialogMain = new System.Windows.Forms.FolderBrowserDialog();
             this.folderBrowserDialogSpeicherort = new System.Windows.Forms.FolderBrowserDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanelPictures.SuspendLayout();
+            this.buttonDirectory = new System.Windows.Forms.Button();
+            this.buttonSaveDirectory = new System.Windows.Forms.Button();
             this.panelPreview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).BeginInit();
             this.menuStripMain.SuspendLayout();
-            this.flowLayoutPanelRecently.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanelPictures
@@ -62,25 +59,11 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanelPictures.AutoScroll = true;
             this.flowLayoutPanelPictures.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelPictures.Controls.Add(this.ButtonChooseDirectory);
             this.flowLayoutPanelPictures.Location = new System.Drawing.Point(13, 27);
             this.flowLayoutPanelPictures.Name = "flowLayoutPanelPictures";
-            this.flowLayoutPanelPictures.Size = new System.Drawing.Size(282, 489);
+            this.flowLayoutPanelPictures.Size = new System.Drawing.Size(282, 642);
             this.flowLayoutPanelPictures.TabIndex = 0;
-            // 
-            // ButtonChooseDirectory
-            // 
-            this.ButtonChooseDirectory.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonChooseDirectory.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ButtonChooseDirectory.Image = null;
-            this.ButtonChooseDirectory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonChooseDirectory.Location = new System.Drawing.Point(3, 3);
-            this.ButtonChooseDirectory.Name = "ButtonChooseDirectory";
-            this.ButtonChooseDirectory.Size = new System.Drawing.Size(274, 41);
-            this.ButtonChooseDirectory.TabIndex = 1;
-            this.ButtonChooseDirectory.Text = "Ordner wählen";
-            this.ButtonChooseDirectory.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.ButtonChooseDirectory.Click += new System.EventHandler(this.ButtonChooseDirectory_Click);
+            this.flowLayoutPanelPictures.Visible = false;
             // 
             // panelPreview
             // 
@@ -88,20 +71,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPreview.Controls.Add(this.buttonSaveDirectory);
+            this.panelPreview.Controls.Add(this.buttonDirectory);
             this.panelPreview.Controls.Add(this.textBoxName);
             this.panelPreview.Controls.Add(this.ButtonSave);
             this.panelPreview.Controls.Add(this.buttonOpenInEditor);
             this.panelPreview.Controls.Add(this.pictureBoxPreview);
             this.panelPreview.Location = new System.Drawing.Point(301, 27);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(645, 489);
+            this.panelPreview.Size = new System.Drawing.Size(658, 642);
             this.panelPreview.TabIndex = 1;
             // 
             // textBoxName
             // 
             this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(329, 457);
+            this.textBoxName.Location = new System.Drawing.Point(342, 610);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(176, 27);
             this.textBoxName.TabIndex = 6;
@@ -128,7 +113,7 @@
             this.ButtonSave.IconVisible = true;
             this.ButtonSave.IconZoom = 90D;
             this.ButtonSave.IsTab = false;
-            this.ButtonSave.Location = new System.Drawing.Point(511, 457);
+            this.ButtonSave.Location = new System.Drawing.Point(524, 610);
             this.ButtonSave.Name = "ButtonSave";
             this.ButtonSave.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.ButtonSave.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
@@ -148,7 +133,7 @@
             this.buttonOpenInEditor.BackColor = System.Drawing.Color.White;
             this.buttonOpenInEditor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenInEditor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenInEditor.Location = new System.Drawing.Point(194, 457);
+            this.buttonOpenInEditor.Location = new System.Drawing.Point(207, 610);
             this.buttonOpenInEditor.Name = "buttonOpenInEditor";
             this.buttonOpenInEditor.Size = new System.Drawing.Size(129, 27);
             this.buttonOpenInEditor.TabIndex = 3;
@@ -158,12 +143,9 @@
             // 
             // pictureBoxPreview
             // 
-            this.pictureBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPreview.Location = new System.Drawing.Point(-1, -1);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
-            this.pictureBoxPreview.Size = new System.Drawing.Size(645, 456);
+            this.pictureBoxPreview.Size = new System.Drawing.Size(658, 609);
             this.pictureBoxPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxPreview.TabIndex = 1;
             this.pictureBoxPreview.TabStop = false;
@@ -178,7 +160,7 @@
             this.hilfeToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(1121, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1134, 24);
             this.menuStripMain.TabIndex = 2;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -194,7 +176,7 @@
             // beendenToolStripMenuItem
             // 
             this.beendenToolStripMenuItem.Name = "beendenToolStripMenuItem";
-            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.beendenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.beendenToolStripMenuItem.Text = "Beenden";
             // 
             // verzeichnisToolStripMenuItem
@@ -240,25 +222,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRecently.AutoScroll = true;
             this.flowLayoutPanelRecently.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelRecently.Controls.Add(this.ButtonChooseSpeicherort);
-            this.flowLayoutPanelRecently.Location = new System.Drawing.Point(952, 27);
+            this.flowLayoutPanelRecently.Location = new System.Drawing.Point(965, 27);
             this.flowLayoutPanelRecently.Name = "flowLayoutPanelRecently";
-            this.flowLayoutPanelRecently.Size = new System.Drawing.Size(157, 352);
+            this.flowLayoutPanelRecently.Size = new System.Drawing.Size(157, 642);
             this.flowLayoutPanelRecently.TabIndex = 3;
-            // 
-            // ButtonChooseSpeicherort
-            // 
-            this.ButtonChooseSpeicherort.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonChooseSpeicherort.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.ButtonChooseSpeicherort.Image = null;
-            this.ButtonChooseSpeicherort.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ButtonChooseSpeicherort.Location = new System.Drawing.Point(3, 3);
-            this.ButtonChooseSpeicherort.Name = "ButtonChooseSpeicherort";
-            this.ButtonChooseSpeicherort.Size = new System.Drawing.Size(149, 41);
-            this.ButtonChooseSpeicherort.TabIndex = 2;
-            this.ButtonChooseSpeicherort.Text = "Speicherort wählen";
-            this.ButtonChooseSpeicherort.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.ButtonChooseSpeicherort.Click += new System.EventHandler(this.ButtonChooseSpeicherort_Click);
+            this.flowLayoutPanelRecently.Visible = false;
             // 
             // folderBrowserDialogMain
             // 
@@ -268,21 +236,36 @@
             // 
             this.folderBrowserDialogSpeicherort.Description = "Wählen sie einen Speicherort aus";
             // 
-            // panel1
+            // buttonDirectory
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(952, 385);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(157, 131);
-            this.panel1.TabIndex = 4;
+            this.buttonDirectory.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDirectory.Location = new System.Drawing.Point(25, 300);
+            this.buttonDirectory.Name = "buttonDirectory";
+            this.buttonDirectory.Size = new System.Drawing.Size(291, 39);
+            this.buttonDirectory.TabIndex = 2;
+            this.buttonDirectory.Text = "Ordner wählen";
+            this.buttonDirectory.UseVisualStyleBackColor = true;
+            this.buttonDirectory.Click += new System.EventHandler(this.buttonDirectory_Click);
+            // 
+            // buttonSaveDirectory
+            // 
+            this.buttonSaveDirectory.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonSaveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveDirectory.Location = new System.Drawing.Point(322, 300);
+            this.buttonSaveDirectory.Name = "buttonSaveDirectory";
+            this.buttonSaveDirectory.Size = new System.Drawing.Size(294, 39);
+            this.buttonSaveDirectory.TabIndex = 7;
+            this.buttonSaveDirectory.Text = "Speicherort wählen";
+            this.buttonSaveDirectory.UseVisualStyleBackColor = true;
+            this.buttonSaveDirectory.Click += new System.EventHandler(this.buttonSaveDirectory_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1121, 528);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1134, 681);
             this.Controls.Add(this.flowLayoutPanelRecently);
             this.Controls.Add(this.panelPreview);
             this.Controls.Add(this.flowLayoutPanelPictures);
@@ -292,13 +275,11 @@
             this.Name = "FormMain";
             this.Text = "Focus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.flowLayoutPanelPictures.ResumeLayout(false);
             this.panelPreview.ResumeLayout(false);
             this.panelPreview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
-            this.flowLayoutPanelRecently.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,16 +296,15 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogMain;
         private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBoxPreview;
-        private MonoFlat.Class1.MonoFlat_Button ButtonChooseDirectory;
         private System.Windows.Forms.ToolStripMenuItem verzeichnisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SpeicherortWählenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem BilderverzeichnisWählenToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSpeicherort;
-        private MonoFlat.Class1.MonoFlat_Button ButtonChooseSpeicherort;
         private System.Windows.Forms.Button buttonOpenInEditor;
         private Bunifu.Framework.UI.BunifuFlatButton ButtonSave;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonDirectory;
+        private System.Windows.Forms.Button buttonSaveDirectory;
     }
 }
 
