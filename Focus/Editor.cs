@@ -39,6 +39,7 @@ namespace Focus
             labelHöhePX.Text = BMPOriginal.Height.ToString() + " px";
             labelBreitePX.Text = BMPOriginal.Width.ToString() + " px";
             labelErstelldatum.Text = "Erstelldatum " + File.GetCreationTime(Path) + " Uhr";
+            BMPEdit = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e)
@@ -48,7 +49,11 @@ namespace Focus
 
         private void buttonResetSize_Click(object sender, EventArgs e)
         {
-            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(OriginalWidth), Convert.ToInt32(OriginalHeight));
+            trackBarBrightness.Value = 0;
+            trackBarContrast.Value = 0;
+            trackBarGamma.Value = 22;
+            pictureBoxMain.Image = BMPOriginal;
+            BMPEdit = BMPOriginal;
             numericUpDownHeight.Value = OriginalHeight;
             numericUpDownWidth.Value = OriginalWidth;
             labelHöhePX.Text = OriginalHeight.ToString() + " px";
@@ -65,12 +70,16 @@ namespace Focus
 
         private void buttonResize_Click(object sender, EventArgs e)
         {
-            pictureBoxMain.Image = EditImage.Resize(BMPEdit,Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
-            BMPEdit = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
+            trackBarBrightness.Value = 0;
+            trackBarContrast.Value = 0;
+            trackBarGamma.Value = 22;
+            BMPEdit = (Bitmap)pictureBoxMain.Image;
+            buttonResize.BackColor = Color.White;
         }
 
         private void Change(object sender, EventArgs e)
         {
+            buttonResize.BackColor = Color.IndianRed;
             BackgroundWorker g = new BackgroundWorker();
             pictureBoxLoadingGIF.Visible = true;
             pictureBoxLoadingGIF.Enabled = true;
@@ -89,7 +98,7 @@ namespace Focus
         {
             pictureBoxMain.Invoke(new Action(() =>
             {
-                pictureBoxMain.Image = EditImage.Edit(BMPEdit, trackBarContrast.Value, trackBarBrightness.Value, trackBarGamma.Value, false);
+                pictureBoxMain.Image = EditImage.Edit(EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value)), trackBarContrast.Value, trackBarBrightness.Value, trackBarGamma.Value, false); EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
             }
             ));
         }
@@ -104,7 +113,7 @@ namespace Focus
             {
                 buttonResize.BackColor = Color.White;
             }
-            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
+            pictureBoxMain.Image = EditImage.Edit(EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value)), trackBarContrast.Value, trackBarBrightness.Value, trackBarGamma.Value, false); EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
         }
 
         private void numericUpDownHeight_ValueChanged(object sender, EventArgs e)
@@ -117,7 +126,7 @@ namespace Focus
             {
                 buttonResize.BackColor = Color.White;
             }
-            pictureBoxMain.Image = EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
+             pictureBoxMain.Image = EditImage.Edit(EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value)), trackBarContrast.Value, trackBarBrightness.Value, trackBarGamma.Value, false);EditImage.Resize(BMPEdit, Convert.ToInt32(numericUpDownWidth.Value), Convert.ToInt32(numericUpDownHeight.Value));
         }
     }
 }

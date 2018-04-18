@@ -15,12 +15,12 @@ namespace Focus
         public static Bitmap Edit(Bitmap BMPEdit, int contrast, int brightness, int gamma, bool OilP)
         {
            
-            if (contrast != 1)//Contrast
+            if (contrast > 0)//Contrast
             {
                 ContrastCorrection ContrastC = new ContrastCorrection(contrast);
                 BMPEdit = ContrastC.Apply(BMPEdit);
             }
-            if (brightness != 1)//Brightness
+            if (contrast > 0)//Brightness
             {
                 BrightnessCorrection BrightnessC = new BrightnessCorrection(brightness);
                 BMPEdit = BrightnessC.Apply(BMPEdit);
