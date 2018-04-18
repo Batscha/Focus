@@ -16,6 +16,13 @@ namespace Focus
         public FormMain()
         {
             InitializeComponent();
+
+            Panel StartScreen = GenerateControls.StartScreen(this, buttonDirectory, buttonSaveDirectory, buttonStart);
+            Controls.Add(StartScreen);
+
+
+
+            ButtonSave.Select(); // Damit anfangs kein Button auf der Startseite ausgewählt ist :D
         }
 
         List<string> imagepaths = new List<string>();
@@ -157,7 +164,7 @@ namespace Focus
             {
                 Variablen.Path = folderBrowserDialogMain.SelectedPath;
                 Variablen.PicturesInFolder = PicturesInFolder();
-                RefreshImages();
+
             }
         }
 
@@ -180,6 +187,11 @@ namespace Focus
             }
             catch{}
             return B;
+        }
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            RefreshImages();
         }
     }
 }

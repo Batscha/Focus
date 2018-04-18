@@ -63,6 +63,16 @@ namespace Focus.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Camera_2_icon {
+            get {
+                object obj = ResourceManager.GetObject("Camera-2-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ellipsis {
             get {
                 object obj = ResourceManager.GetObject("Ellipsis", resourceCulture);

@@ -88,6 +88,7 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GenerateControls.cs" />
     <Compile Include="Images.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pelfusion-Folded-Flat-Camera-2.ico" />
+    <None Include="Resources\Camera-2-icon.png" />
     <None Include="Resources\Ellipsis.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
