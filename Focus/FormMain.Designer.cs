@@ -47,6 +47,8 @@
             // 
             // flowLayoutPanelPictures
             // 
+            this.flowLayoutPanelPictures.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.flowLayoutPanelPictures.AutoScroll = true;
             this.flowLayoutPanelPictures.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelPictures.Location = new System.Drawing.Point(7, 7);
@@ -57,6 +59,9 @@
             // 
             // panelPreview
             // 
+            this.panelPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPreview.Controls.Add(this.buttonStart);
             this.panelPreview.Controls.Add(this.buttonSaveDirectory);
@@ -74,9 +79,10 @@
             // buttonSaveDirectory
             // 
             this.buttonSaveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveDirectory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSaveDirectory.Location = new System.Drawing.Point(3, 49);
             this.buttonSaveDirectory.Name = "buttonSaveDirectory";
-            this.buttonSaveDirectory.Size = new System.Drawing.Size(291, 39);
+            this.buttonSaveDirectory.Size = new System.Drawing.Size(240, 39);
             this.buttonSaveDirectory.TabIndex = 7;
             this.buttonSaveDirectory.Text = "Speicherort wählen";
             this.buttonSaveDirectory.UseVisualStyleBackColor = true;
@@ -85,9 +91,10 @@
             // buttonDirectory
             // 
             this.buttonDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDirectory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDirectory.Location = new System.Drawing.Point(3, 4);
             this.buttonDirectory.Name = "buttonDirectory";
-            this.buttonDirectory.Size = new System.Drawing.Size(291, 39);
+            this.buttonDirectory.Size = new System.Drawing.Size(240, 39);
             this.buttonDirectory.TabIndex = 2;
             this.buttonDirectory.Text = "Ordner wählen";
             this.buttonDirectory.UseVisualStyleBackColor = true;
@@ -118,6 +125,8 @@
             // 
             // flowLayoutPanelRecently
             // 
+            this.flowLayoutPanelRecently.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelRecently.AutoScroll = true;
             this.flowLayoutPanelRecently.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanelRecently.Location = new System.Drawing.Point(958, 7);
@@ -172,6 +181,9 @@
             // 
             // pictureBoxPreview
             // 
+            this.pictureBoxPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPreview.Location = new System.Drawing.Point(-1, -1);
             this.pictureBoxPreview.Name = "pictureBoxPreview";
             this.pictureBoxPreview.Size = new System.Drawing.Size(658, 609);
@@ -181,8 +193,8 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Enabled = false;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStart.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.Location = new System.Drawing.Point(3, 94);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(291, 39);
@@ -204,6 +216,7 @@
             this.Name = "FormMain";
             this.Text = "Focus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.panelPreview.ResumeLayout(false);
             this.panelPreview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPreview)).EndInit();
