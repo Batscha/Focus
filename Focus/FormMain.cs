@@ -20,6 +20,12 @@ namespace Focus
             Panel StartScreen = GenerateControls.StartScreen(this, buttonDirectory, buttonSaveDirectory, buttonStart);
             Controls.Add(StartScreen);
 
+            // Nur kurz
+            StartScreen.Hide();
+            flowLayoutPanelPictures.Show();
+            flowLayoutPanelRecently.Show();
+            panelPreview.Show();
+
 
 
             ButtonSave.Select(); // Damit anfangs kein Button auf der Startseite ausgewählt ist :D
@@ -164,7 +170,7 @@ namespace Focus
             {
                 Variablen.Path = folderBrowserDialogMain.SelectedPath;
                 Variablen.PicturesInFolder = PicturesInFolder();
-
+                RefreshImages();
             }
         }
 

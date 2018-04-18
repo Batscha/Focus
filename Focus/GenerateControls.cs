@@ -17,9 +17,9 @@ namespace Focus
             StartScreen.Size = F.Size;
             StartScreen.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
 
-            ButtonDirectory.Location = new Point(50, 360);
-            ButtonSaveDirectory.Location = new Point(50, 410);
-            ButtonStart.Location = new Point(50, 460);
+            //ButtonDirectory.Location = new Point(50, 360);
+            //ButtonSaveDirectory.Location = new Point(50, 410);
+            //ButtonStart.Location = new Point(50, 460);
 
             PictureBox PictureBoxIcon = new PictureBox();
             PictureBoxIcon.Location = new Point(50, 50);
@@ -28,9 +28,9 @@ namespace Focus
             PictureBoxIcon.Image = Focus.Properties.Resources.Camera_2_icon;
 
             StartScreen.Controls.Add(PictureBoxIcon);
-            StartScreen.Controls.Add(ButtonDirectory);
-            StartScreen.Controls.Add(ButtonSaveDirectory);
-            StartScreen.Controls.Add(ButtonStart);
+            //StartScreen.Controls.Add(ButtonDirectory);
+            //StartScreen.Controls.Add(ButtonSaveDirectory);
+            //StartScreen.Controls.Add(ButtonStart);
             return StartScreen;
         }
     }
