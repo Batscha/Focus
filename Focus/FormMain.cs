@@ -17,16 +17,8 @@ namespace Focus
         {
             InitializeComponent();
 
-            Panel StartScreen = GenerateControls.StartScreen(this, buttonDirectory, buttonSaveDirectory, buttonStart);
+            StartScreen = GenerateControls.StartScreen(this, buttonDirectory, buttonSaveDirectory, buttonStart);
             Controls.Add(StartScreen);
-
-            // Nur kurz
-            StartScreen.Hide();
-            flowLayoutPanelPictures.Show();
-            flowLayoutPanelRecently.Show();
-            panelPreview.Show();
-
-
 
             ButtonSave.Select(); // Damit anfangs kein Button auf der Startseite ausgewählt ist :D
         }
@@ -34,6 +26,7 @@ namespace Focus
         List<string> imagepaths = new List<string>();
         List<string> AlreadyUsed = new List<string>();
         Dictionary<string, string> nametopath = new Dictionary<string, string>();
+        Panel StartScreen;
 
         public void RefreshImages()
         {
@@ -41,93 +34,86 @@ namespace Focus
             AlreadyUsed.Clear();
             nametopath.Clear();
             flowLayoutPanelPictures.Controls.Clear();
-
-            if (Variablen.PicturesInFolder)
+            try
             {
-                try
+                imagepaths = Images.getImagesinFolder(Variablen.Path);
+                String firstpath = "";
+
+                foreach (String path in imagepaths)
                 {
-                    imagepaths = Images.getImagesinFolder(Variablen.Path);
-                    String firstpath = "";
-
-                    foreach (String path in imagepaths)
+                    if (!nametopath.ContainsKey(Images.getImageName(path)))
                     {
-                        if (!nametopath.ContainsKey(Images.getImageName(path)))
+                        if (firstpath == "")
                         {
-                            if (firstpath == "")
-                            {
-                                firstpath = path;
-                            }
-                            nametopath.Add(Images.getImageName(path), path);
-                            PictureBox image = new PictureBox();
-                            Image ThisImage = Image.FromFile(path);
-                            if (ThisImage.Width >= ThisImage.Height)
-                            {
-                                image.Width = 256;
-                                image.Height = 150;
-                                image.SizeMode = PictureBoxSizeMode.StretchImage;
-                                image.Name = Images.getImageName(path);
-                                image.Visible = true;
-                                image.Image = ThisImage;
-                                image.Click += Image_Click;
+                            firstpath = path;
+                        }
+                        nametopath.Add(Images.getImageName(path), path);
+                        PictureBox image = new PictureBox();
+                        Image ThisImage = Image.FromFile(path);
+                        if (ThisImage.Width >= ThisImage.Height)
+                        {
+                            image.Width = 256;
+                            image.Height = 150;
+                            image.SizeMode = PictureBoxSizeMode.StretchImage;
+                            image.Name = Images.getImageName(path);
+                            image.Visible = true;
+                            image.Image = ThisImage;
+                            image.Click += Image_Click;
 
-                                AlreadyUsed.Add(Images.getImageName(path));
-                                flowLayoutPanelPictures.Controls.Add(image);
-                            }
-                            else
+                            AlreadyUsed.Add(Images.getImageName(path));
+                            flowLayoutPanelPictures.Controls.Add(image);
+                        }
+                        else
+                        {
+                            image.Width = 125;
+                            image.Height = 175;
+                            image.SizeMode = PictureBoxSizeMode.StretchImage;
+                            image.Name = Images.getImageName(path);
+                            image.Visible = true;
+                            image.Image = ThisImage;
+                            image.Click += Image_Click;
+
+                            AlreadyUsed.Add(Images.getImageName(path));
+                            flowLayoutPanelPictures.Controls.Add(image);
+
+                            bool Go = true;
+                            foreach (string p in imagepaths)
                             {
-                                image.Width = 125;
-                                image.Height = 175;
-                                image.SizeMode = PictureBoxSizeMode.StretchImage;
-                                image.Name = Images.getImageName(path);
-                                image.Visible = true;
-                                image.Image = ThisImage;
-                                image.Click += Image_Click;
-
-                                AlreadyUsed.Add(Images.getImageName(path));
-                                flowLayoutPanelPictures.Controls.Add(image);
-
-                                bool Go = true;
-                                foreach (string p in imagepaths)
+                                if (Go)
                                 {
-                                    if (Go)
+                                    if (!AlreadyUsed.Contains(Images.getImageName(p)))
                                     {
-                                        if (!AlreadyUsed.Contains(Images.getImageName(p)))
+                                        if (!(Image.FromFile(p).Width >= Image.FromFile(p).Height))
                                         {
-                                            if (!(Image.FromFile(p).Width >= Image.FromFile(p).Height))
-                                            {
-                                                nametopath.Add(Images.getImageName(p), p);
-                                                PictureBox I = new PictureBox();
-                                                I.Width = 125;
-                                                I.Height = 175;
-                                                I.SizeMode = PictureBoxSizeMode.StretchImage;
-                                                I.Name = Images.getImageName(p);
-                                                I.Visible = true;
-                                                I.Image = Image.FromFile(p);
-                                                I.Click += Image_Click;
+                                            nametopath.Add(Images.getImageName(p), p);
+                                            PictureBox I = new PictureBox();
+                                            I.Width = 125;
+                                            I.Height = 175;
+                                            I.SizeMode = PictureBoxSizeMode.StretchImage;
+                                            I.Name = Images.getImageName(p);
+                                            I.Visible = true;
+                                            I.Image = Image.FromFile(p);
+                                            I.Click += Image_Click;
 
-                                                AlreadyUsed.Add(Images.getImageName(p));
-                                                flowLayoutPanelPictures.Controls.Add(I);
-                                                Go = false;
-                                            }
+                                            AlreadyUsed.Add(Images.getImageName(p));
+                                            flowLayoutPanelPictures.Controls.Add(I);
+                                            Go = false;
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    UpdatePreviewImage(firstpath);
+                }
+                UpdatePreviewImage(firstpath);
 
-                }
-                catch (Exception E)
-                {
-                    MessageBox.Show(E.ToString());
-                }
             }
-            else
+            catch (Exception E)
             {
-                MessageBox.Show("No Pics in Folder");
+                MessageBox.Show(E.ToString());
             }
         }
+    
         private void Image_Click(object sender, EventArgs e)
         {
             UpdatePreviewImage(nametopath[((PictureBox)sender).Name]);
@@ -169,8 +155,15 @@ namespace Focus
             if (folderBrowserDialogMain.ShowDialog() == DialogResult.OK)
             {
                 Variablen.Path = folderBrowserDialogMain.SelectedPath;
-                Variablen.PicturesInFolder = PicturesInFolder();
-                RefreshImages();
+                imagepaths = Images.getImagesinFolder(Variablen.Path);
+                if (imagepaths.Count != 0)
+                {
+
+                }
+                else
+                {
+                    
+                }
             }
         }
 
@@ -179,25 +172,26 @@ namespace Focus
             if (folderBrowserDialogSpeicherort.ShowDialog() == DialogResult.OK)
             {
                 Variablen.SpeicherortPath = folderBrowserDialogSpeicherort.SelectedPath;
-                //ButtonChooseSpeicherort.Hide();
             }
-        }
-
-        private bool PicturesInFolder()
-        {
-            bool B = false;
-            try
-            {
-                Images.getImagesinFolder(Variablen.Path);
-                B = true;
-            }
-            catch{}
-            return B;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            StartScreen.Hide();
+
+            flowLayoutPanelPictures.Show();
+            flowLayoutPanelRecently.Show();
+            panelPreview.Show();
+
             RefreshImages();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            foreach (Control C in StartScreen.Controls)
+            {
+                C.Location = new Point(StartScreen.Size.Width / 2 - C.Size.Width / 2 - 10, C.Location.Y); // -10 als Ausgleich
+            }
         }
     }
 }
