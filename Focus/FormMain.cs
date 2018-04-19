@@ -38,7 +38,7 @@ namespace Focus
             {
                 imagepaths = Images.getImagesinFolder(Variablen.Path);
                 String firstpath = "";
-
+                
                 foreach (String path in imagepaths)
                 {
                     if (!nametopath.ContainsKey(Images.getImageName(path)))

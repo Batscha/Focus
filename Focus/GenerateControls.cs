@@ -15,6 +15,7 @@ namespace Focus
             Panel StartScreen = new Panel();
             StartScreen.Location = new Point(0, 0);
             StartScreen.Size = F.Size;
+            StartScreen.BackColor = Color.FromArgb(26, 10, 51);
             StartScreen.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom);
 
             ButtonDirectory.Location = new Point(0, 510);
