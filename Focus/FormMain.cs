@@ -17,7 +17,7 @@ namespace Focus
         {
             InitializeComponent();
 
-            StartScreen = GenerateControls.StartScreen(this, buttonDirectory, buttonSaveDirectory, buttonStart);
+            StartScreen = GenerateControls.StartScreen(this, buttonStart);
             Controls.Add(StartScreen);
 
             ButtonSave.Select(); // Damit anfangs kein Button auf der Startseite ausgewählt ist :D
@@ -31,7 +31,6 @@ namespace Focus
         public void RefreshImages()
         {
             imagepaths.Clear();
-            AlreadyUsed.Clear();
             nametopath.Clear();
             flowLayoutPanelPictures.Controls.Clear();
             try
@@ -60,48 +59,19 @@ namespace Focus
                             image.Image = ThisImage;
                             image.Click += Image_Click;
 
-                            AlreadyUsed.Add(Images.getImageName(path));
                             flowLayoutPanelPictures.Controls.Add(image);
                         }
                         else
                         {
-                            image.Width = 125;
-                            image.Height = 175;
-                            image.SizeMode = PictureBoxSizeMode.StretchImage;
+                            image.Width = 256;
+                            image.Height = 150;
+                            image.SizeMode = PictureBoxSizeMode.Zoom;
                             image.Name = Images.getImageName(path);
                             image.Visible = true;
                             image.Image = ThisImage;
                             image.Click += Image_Click;
 
-                            AlreadyUsed.Add(Images.getImageName(path));
                             flowLayoutPanelPictures.Controls.Add(image);
-
-                            bool Go = true;
-                            foreach (string p in imagepaths)
-                            {
-                                if (Go)
-                                {
-                                    if (!AlreadyUsed.Contains(Images.getImageName(p)))
-                                    {
-                                        if (!(Image.FromFile(p).Width >= Image.FromFile(p).Height))
-                                        {
-                                            nametopath.Add(Images.getImageName(p), p);
-                                            PictureBox I = new PictureBox();
-                                            I.Width = 125;
-                                            I.Height = 175;
-                                            I.SizeMode = PictureBoxSizeMode.StretchImage;
-                                            I.Name = Images.getImageName(p);
-                                            I.Visible = true;
-                                            I.Image = Image.FromFile(p);
-                                            I.Click += Image_Click;
-
-                                            AlreadyUsed.Add(Images.getImageName(p));
-                                            flowLayoutPanelPictures.Controls.Add(I);
-                                            Go = false;
-                                        }
-                                    }
-                                }
-                            }
                         }
                     }
                 }
@@ -126,16 +96,6 @@ namespace Focus
             textBoxName.Text = Dateiendungen.NameOhneEndung(Images.getImageName(path));
         }
 
-        private void SpeicherortWählenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            buttonSaveDirectory_Click(sender, e);
-        }
-
-        private void UrsprungsverzeichnisWählenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            buttonDirectory_Click(sender, e);
-        }
-
         private void buttonOpenInEditor_Click(object sender, EventArgs e)
         {
             if (Variablen.PreviewImagePath != null)
@@ -150,7 +110,7 @@ namespace Focus
             Images.Save(Variablen.PreviewImagePath, Variablen.SpeicherortPath, textBoxName.Text, Variablen.Endung);
         }
 
-        private void buttonDirectory_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialogMain.ShowDialog() == DialogResult.OK)
             {
@@ -158,32 +118,19 @@ namespace Focus
                 imagepaths = Images.getImagesinFolder(Variablen.Path);
                 if (imagepaths.Count != 0)
                 {
+                    StartScreen.Hide();
 
+                    flowLayoutPanelPictures.Show();
+                    flowLayoutPanelRecently.Show();
+                    panelPreview.Show();
+
+                    RefreshImages();
                 }
                 else
                 {
-                    
+                    buttonStart_Click(sender, e); // keine Bilder
                 }
             }
-        }
-
-        private void buttonSaveDirectory_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialogSpeicherort.ShowDialog() == DialogResult.OK)
-            {
-                Variablen.SpeicherortPath = folderBrowserDialogSpeicherort.SelectedPath;
-            }
-        }
-
-        private void buttonStart_Click(object sender, EventArgs e)
-        {
-            StartScreen.Hide();
-
-            flowLayoutPanelPictures.Show();
-            flowLayoutPanelRecently.Show();
-            panelPreview.Show();
-
-            RefreshImages();
         }
 
         private void FormMain_Load(object sender, EventArgs e)

@@ -32,8 +32,6 @@
             this.flowLayoutPanelPictures = new System.Windows.Forms.FlowLayoutPanel();
             this.panelPreview = new System.Windows.Forms.Panel();
             this.buttonStart = new System.Windows.Forms.Button();
-            this.buttonSaveDirectory = new System.Windows.Forms.Button();
-            this.buttonDirectory = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.ButtonSave = new Bunifu.Framework.UI.BunifuFlatButton();
             this.buttonOpenInEditor = new System.Windows.Forms.Button();
@@ -64,8 +62,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelPreview.Controls.Add(this.buttonStart);
-            this.panelPreview.Controls.Add(this.buttonSaveDirectory);
-            this.panelPreview.Controls.Add(this.buttonDirectory);
             this.panelPreview.Controls.Add(this.textBoxName);
             this.panelPreview.Controls.Add(this.ButtonSave);
             this.panelPreview.Controls.Add(this.buttonOpenInEditor);
@@ -81,39 +77,13 @@
             this.buttonStart.BackColor = System.Drawing.Color.White;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStart.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonStart.Location = new System.Drawing.Point(3, 94);
+            this.buttonStart.Location = new System.Drawing.Point(3, 4);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(291, 39);
             this.buttonStart.TabIndex = 8;
             this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = false;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
-            // 
-            // buttonSaveDirectory
-            // 
-            this.buttonSaveDirectory.BackColor = System.Drawing.Color.White;
-            this.buttonSaveDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSaveDirectory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSaveDirectory.Location = new System.Drawing.Point(3, 49);
-            this.buttonSaveDirectory.Name = "buttonSaveDirectory";
-            this.buttonSaveDirectory.Size = new System.Drawing.Size(240, 39);
-            this.buttonSaveDirectory.TabIndex = 7;
-            this.buttonSaveDirectory.Text = "Speicherort wählen";
-            this.buttonSaveDirectory.UseVisualStyleBackColor = false;
-            this.buttonSaveDirectory.Click += new System.EventHandler(this.buttonSaveDirectory_Click);
-            // 
-            // buttonDirectory
-            // 
-            this.buttonDirectory.BackColor = System.Drawing.Color.White;
-            this.buttonDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDirectory.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDirectory.Location = new System.Drawing.Point(3, 4);
-            this.buttonDirectory.Name = "buttonDirectory";
-            this.buttonDirectory.Size = new System.Drawing.Size(240, 39);
-            this.buttonDirectory.TabIndex = 2;
-            this.buttonDirectory.Text = "Ordner wählen";
-            this.buttonDirectory.UseVisualStyleBackColor = false;
-            this.buttonDirectory.Click += new System.EventHandler(this.buttonDirectory_Click);
             // 
             // textBoxName
             // 
@@ -237,8 +207,6 @@
         private System.Windows.Forms.Button buttonOpenInEditor;
         private Bunifu.Framework.UI.BunifuFlatButton ButtonSave;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Button buttonDirectory;
-        private System.Windows.Forms.Button buttonSaveDirectory;
         private System.Windows.Forms.Button buttonStart;
     }
 }

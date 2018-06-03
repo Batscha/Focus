@@ -118,13 +118,13 @@
             this.bunifuFlatButtonSave.IconVisible = true;
             this.bunifuFlatButtonSave.IconZoom = 90D;
             this.bunifuFlatButtonSave.IsTab = false;
-            this.bunifuFlatButtonSave.Location = new System.Drawing.Point(828, 730);
+            this.bunifuFlatButtonSave.Location = new System.Drawing.Point(828, 710);
             this.bunifuFlatButtonSave.Name = "bunifuFlatButtonSave";
             this.bunifuFlatButtonSave.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
             this.bunifuFlatButtonSave.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
             this.bunifuFlatButtonSave.OnHoverTextColor = System.Drawing.Color.White;
             this.bunifuFlatButtonSave.selected = false;
-            this.bunifuFlatButtonSave.Size = new System.Drawing.Size(157, 32);
+            this.bunifuFlatButtonSave.Size = new System.Drawing.Size(157, 52);
             this.bunifuFlatButtonSave.TabIndex = 3;
             this.bunifuFlatButtonSave.Text = "Speichern";
             this.bunifuFlatButtonSave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,9 +138,9 @@
             this.ButtonCancel.BackColor = System.Drawing.Color.White;
             this.ButtonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonCancel.Location = new System.Drawing.Point(721, 730);
+            this.ButtonCancel.Location = new System.Drawing.Point(721, 737);
             this.ButtonCancel.Name = "ButtonCancel";
-            this.ButtonCancel.Size = new System.Drawing.Size(101, 32);
+            this.ButtonCancel.Size = new System.Drawing.Size(101, 25);
             this.ButtonCancel.TabIndex = 6;
             this.ButtonCancel.Text = "Abbrechen";
             this.ButtonCancel.UseVisualStyleBackColor = false;
@@ -233,7 +233,6 @@
             // 
             this.panelAuflösung.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAuflösung.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAuflösung.Controls.Add(this.buttonResetSize);
             this.panelAuflösung.Controls.Add(this.numericUpDownWidth);
             this.panelAuflösung.Controls.Add(this.numericUpDownHeight);
             this.panelAuflösung.Controls.Add(this.buttonResize);
@@ -246,12 +245,13 @@
             // 
             // buttonResetSize
             // 
+            this.buttonResetSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonResetSize.BackColor = System.Drawing.Color.White;
             this.buttonResetSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonResetSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonResetSize.Location = new System.Drawing.Point(151, 27);
+            this.buttonResetSize.Location = new System.Drawing.Point(721, 710);
             this.buttonResetSize.Name = "buttonResetSize";
-            this.buttonResetSize.Size = new System.Drawing.Size(107, 25);
+            this.buttonResetSize.Size = new System.Drawing.Size(101, 25);
             this.buttonResetSize.TabIndex = 30;
             this.buttonResetSize.Text = "Reset";
             this.buttonResetSize.UseVisualStyleBackColor = false;
@@ -314,7 +314,7 @@
             this.pictureBoxLoadingGIF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxLoadingGIF.Enabled = false;
             this.pictureBoxLoadingGIF.Image = global::Focus.Properties.Resources.Ellipsis;
-            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(721, 675);
+            this.pictureBoxLoadingGIF.Location = new System.Drawing.Point(721, 624);
             this.pictureBoxLoadingGIF.Name = "pictureBoxLoadingGIF";
             this.pictureBoxLoadingGIF.Size = new System.Drawing.Size(264, 52);
             this.pictureBoxLoadingGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -350,7 +350,7 @@
             this.labelBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelBrightness.AutoSize = true;
             this.labelBrightness.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBrightness.Location = new System.Drawing.Point(721, 456);
+            this.labelBrightness.Location = new System.Drawing.Point(721, 391);
             this.labelBrightness.Name = "labelBrightness";
             this.labelBrightness.Size = new System.Drawing.Size(75, 21);
             this.labelBrightness.TabIndex = 34;
@@ -359,7 +359,7 @@
             // trackBarBrightness
             // 
             this.trackBarBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarBrightness.Location = new System.Drawing.Point(721, 489);
+            this.trackBarBrightness.Location = new System.Drawing.Point(721, 415);
             this.trackBarBrightness.Maximum = 100;
             this.trackBarBrightness.Name = "trackBarBrightness";
             this.trackBarBrightness.Size = new System.Drawing.Size(264, 45);
@@ -373,7 +373,7 @@
             this.labelGamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGamma.AutoSize = true;
             this.labelGamma.Font = new System.Drawing.Font("Segoe UI Semilight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGamma.Location = new System.Drawing.Point(721, 580);
+            this.labelGamma.Location = new System.Drawing.Point(721, 447);
             this.labelGamma.Name = "labelGamma";
             this.labelGamma.Size = new System.Drawing.Size(63, 21);
             this.labelGamma.TabIndex = 36;
@@ -382,7 +382,7 @@
             // trackBarGamma
             // 
             this.trackBarGamma.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarGamma.Location = new System.Drawing.Point(721, 613);
+            this.trackBarGamma.Location = new System.Drawing.Point(721, 469);
             this.trackBarGamma.Maximum = 44;
             this.trackBarGamma.Name = "trackBarGamma";
             this.trackBarGamma.Size = new System.Drawing.Size(264, 45);
@@ -395,8 +395,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Thistle;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(997, 774);
+            this.Controls.Add(this.buttonResetSize);
             this.Controls.Add(this.labelGamma);
             this.Controls.Add(this.trackBarGamma);
             this.Controls.Add(this.labelBrightness);

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
+using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Focus
 {
@@ -12,12 +14,26 @@ namespace Focus
     {
         public static List<String> getImagesinFolder(String path)
         {
-            List<String> imagepaths = new List<string>();
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.png", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpg", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpeg", System.IO.SearchOption.AllDirectories).ToList());
-            imagepaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.gif", System.IO.SearchOption.AllDirectories).ToList());
-            return imagepaths;
+            List<string> AllFiles = new List<string>();
+            List<string> ImagePaths = new List<string>();
+
+            AllFiles.AddRange(System.IO.Directory.GetFiles(@"" + path, "*", System.IO.SearchOption.AllDirectories).ToList());
+
+            foreach (string s in AllFiles)
+            {
+                if (s.Contains(".png") || s.Contains(".jpg") ||
+                    s.Contains(".jpeg") || s.Contains(".gif") || s.Contains(".JPG"))
+                {
+                    ImagePaths.Add(s);
+                }
+                Debug.WriteLine(s);
+            }
+
+            //ImagePaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.png", System.IO.SearchOption.AllDirectories).ToList());
+            //ImagePaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpg", System.IO.SearchOption.AllDirectories).ToList());
+            //ImagePaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.jpeg", System.IO.SearchOption.AllDirectories).ToList());
+            //ImagePaths.AddRange(System.IO.Directory.GetFiles(@"" + path, "*.gif", System.IO.SearchOption.AllDirectories).ToList());
+            return ImagePaths;
         }
 
 
